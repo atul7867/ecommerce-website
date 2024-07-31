@@ -1,0 +1,17 @@
+ecom-tem/
+env/
+*.pyc 
+.DS_store
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+venv/
+ENV/
+.env
+.env.*
+# Django
+db.sqlite3
+media/
+staticfiles/
