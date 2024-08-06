@@ -1,0 +1,36 @@
+/* Center the welcome message text and style it */
+
+.text-center h1 {
+    font-size: 3rem; /* Adjust font size as needed */
+    font-weight: 700; /* Bold text */
+    color: #333; /* Dark color for better readability */
+    margin-bottom: 0.5rem;
+}
+
+.text-center p {
+    font-size: 1.25rem; /* Slightly larger text */
+    color: #666; /* Lighter color for the subtext */
+}
+
+.card {
+    border-radius: 10px; /* Rounded corners for the card */
+}
+
+.card-header {
+    background-color: #f8f9fa; /* Light background for header */
+    border-bottom: 1px solid #dee2e6; /* Border below header */
+}
+
+.card-body {
+    padding: 2rem; /* Extra padding inside the card */
+}
+
+.card-footer {
+    background-color: #f8f9fa; /* Light background for footer */
+    border-top: 1px solid #dee2e6; /* Border above footer */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary color */
+    border-color: #007bff; /* Border color matching the button */
+}

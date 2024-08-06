@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("eshop_app/",include("eshop_app.urls"))
-    path("",include("eshop_app.urls"))
+    path("eshop_app/",include("eshop_app.urls",namespace='eshop_app'))
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

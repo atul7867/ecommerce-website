@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eshop_app'
+    
+    # custem app--------------
+    'eshop_app',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,28 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# authientation--------------
+LOGIN_URL = 'eshop_app:login'
+LOGOUT_REDIRECT_URL = 'eshop_app:login' 
+
+
+
+#  use for Reset password---------------------(before this write code in .env, like as user-host, user-pwd)
+import environ
+
+# Initialize environment variables
+env = environ.Env()
+# environ.Env.read_env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# print(env('EMAIL_HOST_USER'))
+# print(env('EMAIL_HOST_PASSWORD'))

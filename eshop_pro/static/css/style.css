@@ -78,7 +78,7 @@ a {
         width: calc(100% - 16px); }
   .custom-navbar .custom-navbar-nav li.active a {
     opacity: 1; }
-    .custom-navbar .custom-navbar-nav li.active a:before {
+    .custom-navbar .custom-navbar-nav li.active a::after {
       width: calc(100% - 16px); }
   .custom-navbar .custom-navbar-cta {
     margin-left: 0 !important;
@@ -709,3 +709,22 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+
+
+
+  /* use for dropdown button inside navbar */
+    .dropdown-menu {
+      background-color: #343a40; /* Same as navbar background */
+      border: none;
+  }
+  
+  .dropdown-item {
+      color: #ffffff; /* White text color */
+  }
+  
+  .dropdown-item:hover {
+      color: #343a40; /* Dark text color on hover */
+      background-color: inherit; /* White background on hover */
+  }
+   
+  
