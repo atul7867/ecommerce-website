@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4 font-weight-bold">Request OTP</h1>
+        <p class="lead">Enter your email to receive an OTP.</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Request OTP</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <div class="input-group justify-content-center">
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Request OTP</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <hr>
+                    <small>Already have an OTP? <a href="{% url 'eshop_app:verify_otp' %}">Verify OTP</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

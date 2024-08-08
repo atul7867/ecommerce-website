@@ -135,15 +135,14 @@ LOGOUT_REDIRECT_URL = 'eshop_app:login'
 
 
 
-#  use for Reset password---------------------(before this write code in .env, like as user-host, user-pwd)
+#  use for create A/C using OTP password---------------------(before this write code in .env, like as user-host, user-pwd)
 import environ
 
-# Initialize environment variables
+# # Initialize environment variables
 env = environ.Env()
-# environ.Env.read_env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# settings.py
+# # settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

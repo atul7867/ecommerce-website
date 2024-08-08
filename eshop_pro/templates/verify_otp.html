@@ -1,43 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
 <div class="container mt-5">
-  <div class="text-center mb-4">
-    <h1 class="display-4 font-weight-bold">Welcome to Furni</h1>
-    <p class="lead">Your one-stop destination for premium furniture.</p>
-</div>
+    <div class="text-center mb-4">
+        <h1 class="display-4 font-weight-bold">Verify OTP</h1>
+        <p class="lead">Please enter the OTP sent to your email.</p>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4>Login</h4>
+                    <h4>OTP Verification</h4>
                 </div>
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
                         <div class="form-group mb-3">
-                            {{ form.username.label_tag }}
-                            <div class="input-group justify-content-center ">
-                                {{ form.username }}
+                            <label for="email">Email</label>
+                            <div class="input-group justify-content-center">
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                             </div>
-                            {{ form.username.errors }}
                         </div>
                         <div class="form-group mb-3">
-                            {{ form.password.label_tag }}
+                            <label for="otp">OTP</label>
                             <div class="input-group justify-content-center">
-                                {{ form.password }}
+                                <input type="text" name="otp" class="form-control" placeholder="Enter OTP" required>
                             </div>
-                            {{ form.password.errors }}
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center">
                     <hr>
-                    <small>Create an account? <a href="{% url 'eshop_app:register' %}">Register</a></small>
-                    <small>Forget Password <a href="{% url 'eshop_app:password_reset' %}">Reset Password</a></small>
+                    <small>Didn't receive the OTP? <a href="{% url 'eshop_app:request_otp' %}">Resend OTP</a></small>
                 </div>
             </div>
         </div>
