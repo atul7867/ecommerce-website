@@ -151,4 +151,10 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # print(env('EMAIL_HOST_USER'))
-# print(env('EMAIL_HOST_PASSWORD'))
+
+
+# Use for show address on contact page 
+
+OPENCAGE_API_KEY = env('OPENCAGE_API_KEY')
+
+

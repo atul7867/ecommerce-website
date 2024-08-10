@@ -18,6 +18,14 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib.sites.shortcuts import get_current_site
 from .forms import PasswordResetRequestForm, SetPasswordForm
 
+# Use for show address on contact page 
+import requests
+from django.http import JsonResponse
+from django.conf import settings
+
+# Use for feedback form manually without form.py
+from .models import FeedbackForm
+
 # Create your views here.
 
 def index(request):
@@ -33,7 +41,7 @@ def blog(request):
     return render(request,'blog.html')
 def contact(request):
     return render(request,'contact.html')
-@login_required
+
 def cart(request):
     return render(request,'cart.html')
 def checkout(request):
@@ -178,72 +186,48 @@ def password_reset_complete(request):
     return render(request, "password_reset_complete.html",{'hide_header_and_footer':True})
 
 
+# Use for show address on contact page 
+# def get_address(request):
+    latitude = request.GET.get('lat')
+    longitude = request.GET.get('lng')
+
+    if not latitude or not longitude:
+        return JsonResponse({'error': 'Latitude and longitude are required.'}, status=400)
+
+    api_key = settings.OPENCAGE_API_KEY
+    geocode_url = f'https://api.opencagedata.com/geocode/v1/json?q={latitude}+{longitude}&key={api_key}'
+
+    try:
+        response = requests.get(geocode_url)
+        data = response.json()
+        if data['results']:
+            address = data['results'][0]['formatted']
+            return JsonResponse({'address': address})
+        else:
+            return JsonResponse({'error': 'Unable to retrieve address.'}, status=404)
+    except requests.RequestException as e:
+        return JsonResponse({'error': 'An error occurred while retrieving the address.'}, status=500)
+
+@login_required
+def feedback_form(request):
+    if request.method=="POST":
+        # use only for data are come to here or not
+        # print(request.POST)          
+        fname=request.POST.get('fname')
+        lname=request.POST.get('lname')
+        email=request.POST.get('email')
+        message=request.POST.get('message')
+        
+        #Manually validate the data if necessary
+        if fname and lname and email and message:
+            newform=FeedbackForm(fname=fname,lname=lname,email=email,message=message)
+            newform.save()
+            # return redirect("eshop_app:thankyou")
+            # return HttpResponse("save feedback form")
+            return render(request,"feedback_complate_form.html",{'hide_header_and_footer':True})
+        else:
+            return render(request,'contact.html',{'error':'please fill in all fields.'})
+        
+    return render(request,"contact.html")
 
 
-
-
-
-
-# Second method for authentation(Without creating forms.py)-------------------------------
-
-
-# from django.contrib.auth.models import User
-# from django.contrib.auth import authenticate, login, logout
-# from django.shortcuts import render, redirect
-# from django.core.mail import send_mail
-# from django.conf import settings
-# from django.db import IntegrityError
-# from django.contrib import messages
-
-# def register(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         password_confirm = request.POST.get('password_confirm')
-#         email = request.POST.get('email')
-
-#         # Check if username already exists
-#         if User.objects.filter(username=username).exists():
-#             return render(request, 'register.html', {'error': 'Username already exists', 'hide_header_and_footer': True})
-
-#         # Check if passwords match
-#         if password != password_confirm:
-#             return render(request, 'register.html', {'error': 'Passwords do not match', 'hide_header_and_footer': True})
-
-#         try:
-#             # Create and save user
-#             user = User.objects.create_user(username=username, email=email)
-#             user.set_password(password)
-#             user.save()
-
-#             # Send confirmation email
-#             subject = 'Account Creation Confirmation'
-#             message = f'Hello {username},\n\nYour account has been successfully created.'
-#             from_email = settings.EMAIL_HOST_USER
-#             to_email = [email]
-#             send_mail(subject, message, from_email, to_email)
-
-#             return redirect('eshop_app:login')
-#         except IntegrityError:
-#             return render(request, 'register.html', {'error': 'Failed to create user', 'hide_header_and_footer': True})
-#     else:
-#         return render(request, 'register.html', {'hide_header_and_footer': True})
-
-# def user_login(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-
-#         user = authenticate(request, username=username, password=password)
-
-#         if user is not None:
-#             login(request, user)
-#             return redirect('eshop_app:index')
-#         else:
-#             messages.error(request, 'Invalid username or password')
-
-#     return render(request, 'login.html', {'hide_header_and_footer': True})
-
-# def user_logout(request):
-#     logout(request)
-#     return redirect('eshop_app:login')

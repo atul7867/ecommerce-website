@@ -4,6 +4,8 @@ from .import views
 
 from django.contrib.auth import views as auth_views
 
+# Use for show address on contact page 
+# from .views import get_address
 
 app_name = "eshop_app"
 
@@ -33,4 +35,11 @@ urlpatterns = [
     path('password_reset/done/', views.password_reset_done, name='password_reset_done'),
     path('reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
     path('reset/done/', views.password_reset_complete, name='password_reset_complete'),
+     
+    # Use for show address on contact page 
+    # path('api/get-address/', get_address, name='get_address'),
+    
+    
+    path('feedback_form/', views.feedback_form, name='feedback_form'),
+
 ]
