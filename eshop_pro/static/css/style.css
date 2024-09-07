@@ -31,6 +31,10 @@ a {
     font-weight: 600; }
 
 .custom-navbar {
+  position: sticky;
+  top: 0px;
+  /* Use to make High position navbar as compare of image-resulation (now images not overlape on the navbar) */
+  z-index: 1000;               
   background: #3b5d50 !important;
   padding-top: 20px;
   padding-bottom: 20px; }
@@ -727,4 +731,6 @@ textarea {
       background-color: inherit; /* White background on hover */
   }
    
-  
+  /* use css for shop product------------------ */
+/* Ensure the scrollable container displays items in a row and allows scrolling */
+

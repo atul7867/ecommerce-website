@@ -26,52 +26,96 @@
 
 		
 
+		
+		
 		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container">
-		      	<div class="row">
+			<div class="container">
+				 <div class="row">
+					<!-- Scrollable Product Row -->
+					<div class="col-12">
+						<div class="position-relative">
+							<!-- Left Navigation Button -->
+							<button id="chair-prev-button" class="btn btn-primary position-absolute top-50 start-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-left"></i>
+							</button>
+							
+							<!-- Right Navigation Button -->
+							<button id="chair-next-button" class="btn btn-primary position-absolute top-50 end-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-right"></i>
+							</button>
+							
+							<!-- Product Row -->
+							 <div id="chair-row" class="overflow-hidden	" >
+                                  
+								<div class="row flex-nowrap product-scroll">
+									<!-- Start Column 1 -->
 
+<<<<<<< HEAD
 		      		<!-- Start Column 1 -->
 					<div id="nordic_chair_section" class="col-12 col-md-4 col-lg-3 mb-5">
 						<a class="product-item" href="{%url 'eshop_app:cart' %}">
 							<img src="{% static 'images/product-3.png'%}" class="img-fluid product-thumbnail">
 							<h3 class="product-title" >Nordic Chair</h3>
 							<strong class="product-price">$50.00</strong>
+=======
+>>>>>>> 1f2cbb7 (add payment gateway)
 
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
-						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="{%url 'eshop_app:cart' %}">
-							<img src="{% static 'images/product-1.png'%}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
 
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
+     {% comment %} Note: All Data are fetch from the DataBase-----------------------include with images {% endcomment %}
 
+<<<<<<< HEAD
 					<!-- Start Column 3 -->
 					<div id="kruzo_chair_section" class="col-12 col-md-4 col-lg-3 mb-5">
 						<a class="product-item" href="{%url 'eshop_app:cart' %}">
 							<img src="{% static 'images/product-2.png'%}" class="img-fluid product-thumbnail">
 							<h3 class="product-title">Kruzo Aero Chair</h3>
 							<strong class="product-price">$78.00</strong>
+=======
+>>>>>>> 1f2cbb7 (add payment gateway)
 
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
+	 
+									 {% for ch in chairs %}
+									<div  class="col-12 col-md-4 col-lg-3 mb-5">
+										
+										<a class="product-item" href="{% url 'eshop_app:product_details' %}?prod_id={{ch.id}}">
+											<img src="{{ch.product_image.url}}" class="img-fluid product-thumbnail">
+											<h3 class="product-title">{{ch.title}}</h3>
+											<span><s>{{ch.discounted_price}}</s></span>
+											<strong class="product-price">Rs. {{ch.selling_price}}</strong>
+											<span class="icon-cross">
+												<img src="{% static 'images/cross.svg' %}" class="img-fluid">
+											</span>
+										</a>
+									</div>
+									<!-- End Column 1 -->
+									{% endfor %}
+				
+									<!-- Repeat the remaining columns... -->
+				
+									<!-- Add more products similarly as needed -->
+								</div>
+							</div>
+						</div>
 					</div>
-					<!-- End Column 3 -->
+				</div> 
+				 <div class="row">
+					<!-- Scrollable Product Row -->
+					<div class="col-12">
+						<div class="position-relative">
+							<!-- Left Navigation Button -->
+							<button id="sofa-prev-button" class="btn btn-primary position-absolute top-50 start-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-left"></i>
+							</button>
+							
+							<!-- Right Navigation Button -->
+							<button id="sofa-next-button" class="btn btn-primary position-absolute top-50 end-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-right"></i>
+							</button>
+							
+							<!-- Product Row -->
+							 <div id="sofa-row" class="overflow-hidden	" >
 
+<<<<<<< HEAD
 					<!-- Start Column 4 -->
 					 <div id="ergonomic_chair_section" class="col-12 col-md-4 col-lg-3 mb-5">
 						<a class="product-item" href="{%url 'eshop_app:cart' %}">
@@ -85,65 +129,84 @@
 						</a>
 					</div> 
 					<!-- End Column 4 -->
-
-
-					<!-- Start Column 1 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="{%url 'eshop_app:cart' %}">
-							<img src="{% static 'images/product-3.png'%}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
-						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="{%url 'eshop_app:cart' %}">
-							<img src="{% static 'images/product-1.png'%}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="{%url 'eshop_app:cart' %}">
-							<img src="{% static 'images/product-2.png'%}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="{%static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
+=======
+								<div class="row flex-nowrap product-scroll">
+									<!-- Start Column 1 -->
+									 {% for sf in sofas  %}
+									<div  class="col-12 col-md-4 col-lg-3 mb-5">
+										<a class="product-item" href="{% url 'eshop_app:product_details' %}?prod_id={{sf.id}}">
+											<img src="{{sf.product_image.url}}" class="img-fluid product-thumbnail">
+											<h3 class="product-title">{{sf.title}}</h3>
+											<span><s>{{sf.discounted_price}}</s></span>
+											<strong class="product-price">Rs. {{sf.selling_price}}</strong>
+											<span class="icon-cross">
+												<img src="{% static 'images/cross.svg' %}" class="img-fluid">
+											</span>
+										</a>
+									</div>
+									<!-- End Column 1 -->
+									{% endfor %}
+				
+									<!-- Repeat the remaining columns... -->
+									
+									
+									
+				
+									<!-- Add more products similarly as needed -->
+								</div>
+							</div>
+						</div>
 					</div>
-					<!-- End Column 3 -->
+				</div> 
+				 <div class="row">
+					<!-- Scrollable Product Row -->
+					<div class="col-12">
+						<div class="position-relative">
+							<!-- Left Navigation Button -->
+							<button id="table-prev-button" class="btn btn-primary position-absolute top-50 start-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-left"></i>
+							</button>
+							
+							<!-- Right Navigation Button -->
+							<button id="table-next-button" class="btn btn-primary position-absolute top-50 end-0 translate-middle-y" style="z-index: 800;">
+								<i class="fa fa-chevron-right"></i>
+							</button>
+							
+							<!-- Product Row -->
+							 <div id="table-row" class="overflow-hidden	" >
+>>>>>>> 1f2cbb7 (add payment gateway)
 
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="{%url 'eshop_app:cart' %}">
-							<img src="{% static 'images/product-3.png'%}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
+								<div class="row flex-nowrap product-scroll">
+									<!-- Start Column 1 -->
 
-							<span class="icon-cross">
-								<img src="{% static 'images/cross.svg'%}" class="img-fluid">
-							</span>
-						</a>
+									{% for tb in tables %}
+									<div  class="col-12 col-md-4 col-lg-3 mb-5">
+										<a class="product-item" href="{% url 'eshop_app:product_details' %}?prod_id={{tb.id}}">
+											<img src="{{tb.product_image.url}}" class="img-fluid product-thumbnail">
+											<h3 class="product-title">{{tb.title}}</h3>
+											<span><s>{{tb.discounted_price}}</s></span>
+											<strong class="product-price">Rs. {{tb.selling_price}}</strong>
+											<span class="icon-cross">
+												<img src="{% static 'images/cross.svg' %}" class="img-fluid">
+											</span>
+										</a>
+									</div>
+									<!-- End Column 1 -->
+				                    {% endfor %}
+									<!-- Repeat the remaining columns... -->
+									
+									
+									
+				
+									<!-- Add more products similarly as needed -->
+								</div>
+							</div>
+						</div>
 					</div>
-					<!-- End Column 4 -->
-
-		      	</div>
-		    </div>
+				</div> 
+				 	
+				
 		</div>
+		
+	</div>
 		{% endblock content %}

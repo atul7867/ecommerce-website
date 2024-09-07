@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow-lg p-4">
+                    <h2 class="text-center text-primary mb-4">Profile Details</h2>
+                    {% if customers %}
+                        {% for cust in customers %} 
+                            <div class="mb-4">
+                                <h1>Profile:{{ forloop.counter }}</h1>
+                                
+                                <p class="mb-1 text-warning"><strong>User:</strong> {{ cust.user }}</p>
+                                <p class="mb-1"><strong>first_name:</strong> {{ cust.first_name }}</p>
+                                <p class="mb-1"><strong>last_name:</strong> {{ cust.last_name }}</p>
+                                <p class="mb-1"><strong>company_name:</strong> {{ cust.company_name }}</p>
+                                <p class="mb-1"><strong>State:</strong> {{ cust.state }}</p>
+                                <p class="mb-1"><strong>address:</strong> {{ cust.address }}</p>
+                                <p class="mb-1"><strong>address2:</strong> {{ cust.address2 }}</p>
+                                <p class="mb-1"><strong>postal_zip:</strong> {{ cust.postal_zip }}</p>
+                                <p class="mb-1"><strong>email_address:</strong> {{ cust.email_address }}</p>
+                                <p class="mb-1"><strong>phone:</strong> {{ cust.phone }}</p>
+                                <p class="mb-1"><strong>order_notes:</strong> {{ cust.order_notes }}</p>
+                            </div>
+                            {% if not forloop.last %}
+                                <hr> <!-- Adds a separator between multiple customer records -->
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-warning text-center" role="alert">
+                            No profile data available.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

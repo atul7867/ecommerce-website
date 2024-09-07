@@ -22,48 +22,7 @@
 	<body>
 		{% if not hide_header_and_footer %}
 		<!-- Start Header/Navigation -->
-		{% comment %} <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
-
-			<div class="container">
-				<a class="navbar-brand" href="{%url 'eshop_app:index'%}">Furni<span>.</span></a>
-
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						
-						<li class="nav-item active">
-						<a class="nav-link" href="{%url 'eshop_app:index'%}">Home</a>
-						</li>
-						<li><a class="nav-link" href="{%url 'eshop_app:shop'%}">Shop</a></li>
-						<li><a class="nav-link" href="{%url 'eshop_app:about'%}">About us</a></li>
-						<li><a class="nav-link" href="{%url 'eshop_app:services'%}">Services</a></li>
-						<li><a class="nav-link" href="{%url 'eshop_app:blog'%}">Blog</a></li>
-						<li><a class="nav-link" href="{%url 'eshop_app:contact'%}">Contact us</a></li>
-						
-						{% if user.is_authenticated %}
-						<li class="nav-item">
-						  <a class="nav-link" href="#"><i class="fa fa-user"></i> {{ user.username }}</a>
-						</li>
-						<li class="nav-item">
-						  <a class="nav-link" href="{% url 'eshop_app:logout' %}">Logout</a>
-						</li>
-						{% else %}
-						<li class="nav-item"><a class="nav-link" href="{% url 'eshop_app:login' %}">Login</a></li>
-						<li class="nav-item"><a class="nav-link" href="{% url 'eshop_app:register' %}">Register</a></li>
-						{% endif %}
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img  src="{% static 'images/user.svg' %}"></a></li>
-						<li><a class="nav-link" href="{%url 'eshop_app:cart'%}"><img src="{% static 'images/cart.svg' %}"></a></li>
-					</ul>
-				</div>
-			</div>
-				
-		</nav> {% endcomment %}
+		
 
 		<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
 			<div class="container">
@@ -89,6 +48,9 @@
 								<i class="fa fa-user"></i> {{ user.username }}
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="userDropdown">
+								<li><a class="dropdown-item" href="{% url 'eshop_app:profile'%}">Create Profile</a></li>
+								<li><a class="dropdown-item" href="{% url 'eshop_app:profile_view'%}">View Profile</a></li>
+								<li><a class="dropdown-item" href="#">Order</a></li>
 								<li><a class="dropdown-item" href="{% url 'eshop_app:logout' %}">Logout</a></li>
 								<!-- Add more dropdown items as needed -->
 							</ul>
@@ -117,6 +79,7 @@
 		<!-- End Header/Navigation -->
 	     {% endif %} 
 		 {% block content %}{% endblock content %}
+		 {% block paymentgetway %}{% endblock paymentgetway %}
 		 
 		 <!-- this Condational for register page and login page , if you want to show form on blank page with bootstrap CDN  -->
 		 {% if not hide_header_and_footer %}             

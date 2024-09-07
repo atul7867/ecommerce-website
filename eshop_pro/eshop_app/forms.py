@@ -28,8 +28,17 @@ class SetPasswordForm(SetPasswordForm):
         model = User
         fields = ['new_password1', 'new_password2']
 
+#Use to create Profile---
+from .models import Customer
+class CustomerProfileForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['first_name','last_name','company_name', 'state','address','address2','postal_zip','email_address','phone','order_notes']
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1f2cbb7 (add payment gateway)

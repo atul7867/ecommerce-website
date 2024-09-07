@@ -57,7 +57,7 @@ ROOT_URLCONF = 'eshop_pro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],    # Use full for development, staging, production
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -157,4 +157,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 OPENCAGE_API_KEY = env('OPENCAGE_API_KEY')
 
+<<<<<<< HEAD
+=======
+RAZOR_KEY_ID =env('RAZOR_KEY_ID')
+RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
+>>>>>>> 1f2cbb7 (add payment gateway)
 

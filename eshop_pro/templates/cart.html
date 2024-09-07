@@ -16,7 +16,7 @@
 						<div class="col-lg-7">
 							
 						</div>
-					</div>
+					</div>  
 				</div>
 			</div>
 		<!-- End Hero Section -->
@@ -40,53 +40,31 @@
                         </tr>
                       </thead>
                       <tbody>
+                        {% for item in cart_items %}
                         <tr>
-                          <td class="product-thumbnail">
-                            <img src="{%static 'images/product-1.png'%}" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 1</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+                            <td class="product-thumbnail">
+                                <img src="{{ item.product.product_image.url }}" alt="Image" class="img-fluid">
+                            </td>
+                            <td class="product-name">
+                                <h2 class="h5 text-black">{{ item.product.title }}</h2>
+                            </td>
+                            <td>Rs. {{ item.product.selling_price }}</td>
+                            <td>
+                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                                    </div>
+                                    <input type="text" class="form-control text-center quantity-amount" value="{{ item.quantity }}" aria-label="Product Quantity " >
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Rs. {{ item.total_price }}</td>
+                            <td><a href="{% url 'eshop_app:remove_from_cart' item.id %}" class="btn btn-black btn-sm">X</a></td>
                         </tr>
-        
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="{%static 'images/product-2.png'%}" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 2</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
+                        {% endfor %}
+                        
                       </tbody>
                     </table>
                   </div>
@@ -129,7 +107,8 @@
                           <span class="text-black">Subtotal</span>
                         </div>
                         <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
+                         
+                          <strong class="text-black">Rs. {{subtotal}}</strong>
                         </div>
                       </div>
                       <div class="row mb-5">
@@ -137,7 +116,7 @@
                           <span class="text-black">Total</span>
                         </div>
                         <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
+                          <strong class="text-black">Rs. {{subtotal}}</strong>
                         </div>
                       </div>
         

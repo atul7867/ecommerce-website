@@ -31,10 +31,9 @@
 		          </div>
 		        </div>
 		      </div>
-			  <form id="payment-form" method="POST" action="{% url 'eshop_app:placeorder' %}">
+			  <form method="POST" action="{% url 'eshop_app:placeorder' %}">
 				{% csrf_token %}
-				<input type="hidden" id="razorpay_order_id" name="razorpay_order_id" value="{{ razorpay_order_id }}">
-
+            
          
 			  <div class="container mt-5 mb-5">
 				<div class="row justify-content-center">
@@ -194,21 +193,40 @@
 		                </table>
 
 		                <div class="border p-3 mb-3">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapserazorpay" role="button" aria-expanded="false" aria-controls="collapserazorpay">Razorpay</a></h3>
+		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 
-		                  <div class="collapse" id="collapserazorpay">
+		                  <div class="collapse" id="collapsebank">
+		                    <div class="py-2">
+		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+		                    </div>
+		                  </div>
+		                </div>
+
+		                <div class="border p-3 mb-3">
+		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
+
+		                  <div class="collapse" id="collapsecheque">
+		                    <div class="py-2">
+		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+		                    </div>
+		                  </div>
+		                </div>
+
+		                <div class="border p-3 mb-3">
+		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+
+		                  <div class="collapse" id="collapsepaypal">
 		                    <div class="py-2">
 		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
 		                    </div>
 		                  </div>
 		                </div>
 		               
-						<div class="form-group">
-							<button id="rzp-button" class="btn btn-black btn-lg py-3 btn-block">Place Order</button>
-						</div>	
-                    
+						
+
 		               <div class="form-group">
-		                  {% comment %} <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='{%url 'eshop_app:thankyou' %}'">Place Order</button> {% endcomment %}
+		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='{%url 'eshop_app:thankyou' %}'">Place Order</button>
+
 		                </div>
                        
 		              </div>
@@ -225,38 +243,3 @@
 		  </div>
           {% endblock content %}
 	
-		  {% block paymentgetway %}
-		  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-		  <script>
-			var options = {
-				"key": "{{ settings.RAZORPAY_API_KEY }}", // Enter the Key ID generated from the Dashboard
-				"amount": "{{ order_amount }}", // Amount is in currency subunits. Default currency is INR.
-				"currency": "{{ order_currency }}",
-				"name": "Your Company Name",
-				"description": "Test Transaction",
-				"image": "https://example.com/your_logo", // Replace with your logo
-				"order_id": "{{ razorpay_order_id }}", // Razorpay order ID
-				"handler": function (response){
-					// Submit the form with the necessary payment details
-					document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
-					document.getElementById('payment-form').submit();
-				},
-				"prefill": {
-					"name": "{{ user.first_name }} {{ user.last_name }}",
-					"email": "{{ user.email }}",
-					"contact": "{{ user.profile.phone_number }}"
-				},
-				"theme": {
-					"color": "#3399cc"
-				}
-			};
-			var rzp1 = new Razorpay(options);
-			document.getElementById('rzp-button').onclick = function(e){
-				rzp1.open();
-				e.preventDefault();
-			}
-			</script>
-			
-		  
-		  {% endblock paymentgetway %}
-		 
